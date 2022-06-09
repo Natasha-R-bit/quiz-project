@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Template</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Rubik+Puddles&display=swap');
+        .Quiz-Container{
+            display:flex;
+            height:100vh;
+            flex-direction:column;
+            justify-content:center;
+            gap:20px;
+            font-family: 'Rubik Puddles', cursive;
+            background-color:black;
+            color:royalblue;
+            font-weight: bold;
+        }
+        *{
+            margin:0;
+            padding:0;
+        }
+        .score{
+            display:flex;
+            flex-direction:row;
+            justify-content:space-around;
+            font-size:20px;
+            text-decoration: underline;
+            color:royalblue;
+            font-weight:bold;
+            text-transform: uppercase;
+        }
+        .question{
+            display:flex;
+            justify-content:center;
+            font-size:25px;
+            text-decoration:underline;
+        }
+        .question:hover{
+            color:royalblue;
+        }
+        .options{
+           color:white;
+           font-weight: bold;
+        }
+        .next{
+            display:flex;
+            justify-content: space-around;
+        }
+        .next button{
+            font-size:20px;
+            background-color:royalblue;
+            color:white;
+            padding:10px;
+            padding-right:20px;
+            padding-left:20px;
+            font-family: 'Rubik Puddles', cursive;
+            font-weight: bold;
+        }
+        body{
+            font-family:Verdana, Geneva, Tahoma, sans-serif;
+        }
+        form{
+            display:grid;
+            grid-template-columns:50% 50%;
+            justify-content:center;
+            gap:20px;
+        }
+        .option{
+            text-align:center;
+            font-size:20px;
+            padding:10px;
+            border:thin solid black;
+            width:50%;
+            justify-self: center;
+            border-radius:10px;
+        }
+        .option:last-child{
+            margin-left:102%;
+        }
+        .option:hover{
+            background-color:royalblue;
+        }
+        p{
+            text-align:center;
+        }
+    </style>
+</head>
+<body>
+    <div class="Quiz-Container">
+        <div class="score">
+            <p>Score: {{session.get("user_score",0)}}/100 </p>
+            <p>Question: 2/10</p>
+        </div>
+        <div class="question">
+            <p>What continent is Canada in?</p>
+        </div>
+
+        <div class="options">
+
+            <form action="/q2" method="post">
+                <div class="option">
+                    <label>North America</label>
+                    <input type="radio" name="q2" id="" value="a">
+                </div>
+                <div class="option">
+                    <label>Asia</label>
+                    <input type="radio" name="q2" id="" value="b">
+                </div> 
+                <div class="option">
+                    <label>Africa</label>
+                    <input type="radio" name="q2" id="" value="c">
+                </div> 
+                <div class="submit next">
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+        <div class="next">
+            <a href="/q1"><button>Previous</button></a>
+            <a href="/q3"><button>Next</button></a>
+        </div>
+        <p>{{result[0]}}</p>
+    </div>
+</body>
+</html>
